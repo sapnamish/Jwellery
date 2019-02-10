@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\MenuItem;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,10 @@ class HomeController extends Controller
     }
 
     public function getDetails($itemName) {
-        return view('home', compact('itemName'));
+
+        $item = Item::where('menu_name', $itemName)->get();
+        if(count($item) > 0)
+            $item = $item[0];
+        return view('home', compact('itemName', 'item'));
     }
 }

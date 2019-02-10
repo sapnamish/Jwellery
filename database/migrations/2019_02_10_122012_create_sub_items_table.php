@@ -15,7 +15,7 @@ class CreateSubItemsTable extends Migration
     {
         Schema::create('sub_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('item_id');
+            $table->integer('item_id');
             $table->string('menu_name');
             $table->string('item_name');
             $table->string('logo');
